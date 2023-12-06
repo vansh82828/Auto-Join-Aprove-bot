@@ -194,13 +194,13 @@ async def fcast(_, m : Message):
 
 @app.on_message(filters.command("gbcast") & filters.user(cfg.SUDO) & filters.reply)
 async def broadcast_group(bot, message):
-    allgroups = groups
+    allgroups = already_dbg
     b_msg = message.reply_to_message
     sts = await message.reply_text(
         text='🔊 Broadcasting your messages To Groups...'
     )
     start_time = time.time()
-    total_groups = await all_groups.total_chat_count()
+    total_groups = await already_dbg.total_chat_count()
     done = 0
     failed =0
 
