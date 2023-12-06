@@ -200,7 +200,7 @@ async def broadcast_group(bot, message):
         text='🔊 Broadcasting your messages To Groups...'
     )
     start_time = time.time()
-    total_groups = await db.total_chat_count()
+    total_groups = await all_groups.total_chat_count()
     done = 0
     failed =0
 
