@@ -6,10 +6,10 @@
 from os import path, getenv
 
 class Config:
-    API_ID = int(getenv("API_ID", "29849415"))
-    API_HASH = getenv("API_HASH", "0dd6c10897b85d7f10a8dcdeb74f8b8a")
-    BOT_TOKEN = getenv("BOT_TOKEN", "6356800097:AAGBRWOaHu8f4h9e424GChabOGmOcQZpi5s")
-    FSUB = getenv("FSUB", "VJ_Botz")
+    API_ID = int(getenv("API_ID", "15657755"))
+    API_HASH = getenv("API_HASH", "7cce51d4664d010b90ad690e0d5121ad")
+    BOT_TOKEN = getenv("BOT_TOKEN", "6678430839:AAELqD5bQMwG9M_wXoQMv-Le4G_VBq8-lSM")
+    FSUB = getenv("FSUB", "TagaruPalya_kannad_movie_12")
     CHID = int(getenv("CHID", "-1001787034706"))
     SUDO = list(map(int, getenv("SUDO", "5165943027").split()))
     MONGO_URI = getenv("MONGO_URI", "mongodb+srv://sushankm16:4i1WAfPYKWyqPIDD@cluster0.sngp9pz.mongodb.net/?retryWrites=true&w=majority")
