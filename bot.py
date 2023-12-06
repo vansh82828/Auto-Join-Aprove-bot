@@ -191,5 +191,32 @@ async def fcast(_, m : Message):
 
     await lel.edit(f"✅Successfull to `{success}` users.\n❌ Faild to `{failed}` users.\n👾 Found `{blocked}` Blocked users \n👻 Found `{deactivated}` Deactivated users.")
 
+
+@app.on_message(filters.command("gbcast") & filters.user(cfg.SUDO) & filters.reply)
+async def broadcast_group(bot, message):
+    groups = await db.get_all_chats()
+    b_msg = message.reply_to_message
+    sts = await message.reply_text(
+        text='🔊 Broadcasting your messages To Groups...'
+    )
+    start_time = time.time()
+    total_groups = await db.total_chat_count()
+    done = 0
+    failed =0
+
+    success = 0
+    async for group in groups:
+        pti, sh = await broadcast_messages_group(int(group['id']), b_msg)
+        if pti:
+            success += 1
+        elif sh == "Error":
+                failed += 1
+        done += 1
+        if not done % 20:
+            await sts.edit(f"Broadcast in progress:\n\nTotal Groups {total_groups}\nCompleted: {done} / {total_groups}\nSuccess: {success}")    
+    time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
+    await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Groups {total_groups}\nCompleted: {done} / {total_groups}\nSuccess: {success}")
+
+
 print("I'm Alive Now!")
 app.run()
